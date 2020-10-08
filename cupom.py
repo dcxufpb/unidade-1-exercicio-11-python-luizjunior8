@@ -37,13 +37,13 @@ class Endereco:
 
     bairro = self.bairro + " - " if self.bairro else ""
 
+    municipio = self.municipio + " - "
+
     cep = "CEP:" + self.cep if self.cep else ""
 
-    return '''{logradouro}{numero}{complemento}
-{bairro}{municipio} - {estado}
-{cep}'''.format(logradouro=logradouro, numero=numero, complemento=complemento, 
-                bairro=bairro, municipio=self.municipio, estado=self.estado,
-                cep=cep)
+    return (f"""{logradouro}{numero}{complemento}
+{bairro}{municipio}{self.estado}
+{cep}""")
 
 
 class Loja:
@@ -80,13 +80,14 @@ class Loja:
 
     observacao = self.observacao if self.observacao else ""
 
+    cnpj = "CNPJ: " + self.cnpj
 
-    return '''{nome_loja}
-{endereco}{telefone}
+    inscricao_estadual = "IE: " + self.inscricao_estadual
+
+
+    return (f"""{self.nome_loja}
+{texto_endereco}{telefone}
 {observacao}
-CNPJ: {cnpj}
-IE: {inscricao_estadual}'''.format(nome_loja=self.nome_loja, 
-                                   endereco=texto_endereco, telefone=telefone, 
-                                   observacao=observacao, cnpj=self.cnpj, 
-                                   inscricao_estadual=self.inscricao_estadual)
+{cnpj}
+{inscricao_estadual}""")
      
